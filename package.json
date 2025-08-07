@@ -1,0 +1,61 @@
+{
+  "name": "launch-copy-mc",
+  "version": "1.0.0",
+  "description": "A utility program that bundles and packages minecraft profiles to be used on another computer",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron . --dev",
+    "build": "electron-builder",
+    "build:win": "electron-builder --win",
+    "build:mac": "electron-builder --mac",
+    "build:linux": "electron-builder --linux",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder",
+    "clean": "rimraf dist"
+  },
+  "keywords": [
+    "minecraft",
+    "profile",
+    "launcher",
+    "packaging",
+    "electron"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^27.0.0",
+    "electron-builder": "^24.6.4",
+    "rimraf": "^5.0.1"
+  },
+  "dependencies": {
+    "archiver": "^6.0.1",
+    "extract-zip": "^2.0.1",
+    "fs-extra": "^11.1.1",
+    "uuid": "^9.0.1"
+  },
+  "build": {
+    "appId": "com.launchcopymc.app",
+    "productName": "Launch Copy MC",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "src/**/*",
+      "node_modules/**/*",
+      "package.json"
+    ],
+    "mac": {
+      "icon": "assets/icon.icns",
+      "category": "public.app-category.utilities"
+    },
+    "win": {
+      "icon": "assets/icon.ico",
+      "target": "nsis"
+    },
+    "linux": {
+      "icon": "assets/icon.png",
+      "target": "AppImage"
+    }
+  }
+}

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Launch Copy MC</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="app">
+        <main>
+            <div class="tab-container">
+                <div class="tabs">
+                    <button class="tab-button active" data-tab="package">Package Profile</button>
+                    <button class="tab-button" data-tab="import">Import Profile</button>
+                </div>
+
+                <!-- Package Profile Tab -->
+                <div id="package-tab" class="tab-content active">
+                    <div class="section">
+                        <h2>Select Minecraft Directory</h2>
+                        <div class="input-group">
+                            <input type="text" id="minecraft-dir" placeholder="Minecraft directory path..." readonly>
+                            <button id="select-dir-btn">Browse</button>
+                        </div>
+                    </div>
+
+                    <div class="section" id="profiles-section" style="display: none;">
+                        <h2>Available Profiles</h2>
+                        <div id="profiles-list"></div>
+                    </div>
+                </div>
+
+                <!-- Import Profile Tab -->
+                <div id="import-tab" class="tab-content">
+                    <div class="section">
+                        <h2>Import LCMC Profile</h2>
+                        <div class="import-area">
+                            <button id="import-btn">Select LCMC File</button>
+                            <p>Choose a .lcmc file to import into your Minecraft launcher</p>
+                            <small>Supported formats: .lcmc (Launch Copy MC Profile)</small>
+                        </div>
+                    </div>
+
+                    <div class="section" id="import-preview" style="display: none;">
+                        <h2>Profile Information</h2>
+                        <div id="import-details"></div>
+                        
+                        <div class="section">
+                            <h3>Installation Options</h3>
+                            <div class="installation-options">
+                                <label class="checkbox-option">
+                                    <input type="checkbox" id="install-mods" checked>
+                                    <span class="checkmark"></span>
+                                    Install mods and dependencies
+                                </label>
+                                <label class="checkbox-option">
+                                    <input type="checkbox" id="install-configs" checked>
+                                    <span class="checkmark"></span>
+                                    Install configuration files
+                                </label>
+                                <label class="checkbox-option">
+                                    <input type="checkbox" id="install-resources">
+                                    <span class="checkmark"></span>
+                                    Install resource packs and shaders
+                                </label>
+                                <label class="checkbox-option">
+                                    <input type="checkbox" id="install-saves">
+                                    <span class="checkmark"></span>
+                                    Install world saves (if available)
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="actions">
+                            <button id="install-btn" class="primary">Install Profile</button>
+                            <button id="cancel-import-btn" class="secondary">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Loading overlay -->
+        <div id="loading-overlay" class="overlay" style="display: none;">
+            <div class="loading-spinner"></div>
+            <p id="loading-text">Loading...</p>
+        </div>
+
+        <!-- Success/Error notifications -->
+        <div id="notification" class="notification" style="display: none;">
+            <span id="notification-text"></span>
+            <button id="notification-close">&times;</button>
+        </div>
+    </div>
+
+    <script src="renderer.js"></script>
+</body>
+</html>
